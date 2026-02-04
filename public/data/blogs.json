@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "tag": {
+      "en": "AI Trends",
+      "tr": "AI Trendleri"
+    },
+    "date": {
+      "en": "Mar 15, 2024",
+      "tr": "15 Mar 2024"
+    },
+    "title": {
+      "en": "The Future of AI Automation in 2024",
+      "tr": "2024'te AI Otomasyonunun Geleceği"
+    },
+    "desc": {
+      "en": "Discover how artificial intelligence is reshaping industries and what to expect in the coming year.",
+      "tr": "Yapay zekanın endüstrileri nasıl yeniden şekillendirdiğini ve önümüzdeki yılda neler bekleyeceğinizi keşfedin."
+    },
+    "graphic": "trend",
+    "tagColor": "text-purple-400",
+    "borderColor": "group-hover:border-purple-500/50",
+    "gradient": "from-[#1a1a1a] to-[#0f0f0f]"
+  },
+  {
+    "id": 2,
+    "tag": {
+      "en": "Technology",
+      "tr": "Teknoloji"
+    },
+    "date": {
+      "en": "Mar 10, 2024",
+      "tr": "10 Mar 2024"
+    },
+    "title": {
+      "en": "Integrating LLMs into Your Workflow",
+      "tr": "LLM'leri İş Akışınıza Entegre Etmek"
+    },
+    "desc": {
+      "en": "A comprehensive guide to leveraging Large Language Models for business efficiency.",
+      "tr": "İş verimliliği için Büyük Dil Modellerinden yararlanmaya yönelik kapsamlı bir kılavuz."
+    },
+    "graphic": "chip",
+    "tagColor": "text-pink-400",
+    "borderColor": "group-hover:border-pink-500/50",
+    "gradient": "from-[#1a1a1a] to-[#0f0f0f]"
+  },
+  {
+    "id": 3,
+    "tag": {
+      "en": "Security",
+      "tr": "Güvenlik"
+    },
+    "date": {
+      "en": "Mar 05, 2024",
+      "tr": "05 Mar 2024"
+    },
+    "title": {
+      "en": "AI Safety & Data Privacy",
+      "tr": "AI Güvenliği & Veri Gizliliği"
+    },
+    "desc": {
+      "en": "How to ensure your automated systems are secure and compliant with data protection regulations.",
+      "tr": "Otomatik sistemlerinizin güvenli olduğundan ve veri koruma düzenlemelerine uygun olduğundan nasıl emin olunur."
+    },
+    "graphic": "security",
+    "tagColor": "text-white",
+    "borderColor": "group-hover:border-white/50",
+    "gradient": "from-[#1a1a1a] to-[#0f0f0f]"
+  }
+]
