@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { GalaxyGenerator } from './GalaxyGenerator';
 import { ControlsPanel } from './ControlsPanel';
 import { Toolbar } from './Toolbar';
@@ -23,9 +23,44 @@ const GalaxyPage: React.FC = () => {
   const [parameters, setParameters] = useState<GalaxyParameters>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : DEFAULT_PARAMETERS;
+      if (!saved) return DEFAULT_PARAMETERS;
+
+      const parsed = JSON.parse(saved);
+
+      // Validate data structure and types
+      if (typeof parsed !== 'object' || parsed === null) {
+        if (import.meta.env.MODE === 'development') {
+          console.warn('Invalid data type in localStorage');
+        }
+        return DEFAULT_PARAMETERS;
+      }
+
+      // Whitelist expected keys and validate types
+      const validKeys = Object.keys(DEFAULT_PARAMETERS) as (keyof GalaxyParameters)[];
+      const sanitized = { ...DEFAULT_PARAMETERS };
+
+      for (const key of validKeys) {
+        if (key in parsed && typeof parsed[key] === typeof DEFAULT_PARAMETERS[key]) {
+          // Additional validation for numeric values
+          if (typeof DEFAULT_PARAMETERS[key] === 'number') {
+            const num = Number(parsed[key]);
+            if (!isNaN(num) && isFinite(num)) {
+              (sanitized as any)[key] = num;
+            }
+          } else if (typeof DEFAULT_PARAMETERS[key] === 'string') {
+            // Sanitize string values
+            (sanitized as any)[key] = String(parsed[key]).slice(0, 100);
+          } else {
+            (sanitized as any)[key] = parsed[key];
+          }
+        }
+      }
+
+      return sanitized;
     } catch (e) {
-      console.warn('Ayarlar yüklenemedi:', e);
+      if (import.meta.env.MODE === 'development') {
+        console.warn('Ayarlar yüklenemedi:', e);
+      }
       return DEFAULT_PARAMETERS;
     }
   });
@@ -106,15 +141,8 @@ const GalaxyPage: React.FC = () => {
         </Canvas>
       </div>
 
-      {/* Back Button - Top Left */}
-      <div className="absolute top-6 left-8 z-50 flex items-center gap-4">
-        <button
-          onClick={() => navigate('/')}
-          className="bg-glass/50 hover:bg-glass border border-glassBorder text-white p-2 rounded-full transition-all backdrop-blur-sm"
-          aria-label="Go back to home"
-        >
-          <ArrowLeft size={20} />
-        </button>
+      {/* Logo - Top Left */}
+      <div className="absolute top-6 left-8 z-50">
         <h2 className="text-2xl md:text-3xl font-bold text-[#FFE8A3] drop-shadow-[0_0_15px_rgba(255,215,130,0.4)] tracking-tight font-sans">
           Botfusions
         </h2>
@@ -140,7 +168,7 @@ const GalaxyPage: React.FC = () => {
             {t.subTagline}
           </p>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
             className="group mt-8 px-8 py-3 bg-glass/50 hover:bg-glass border border-glassBorder text-white rounded-xl font-medium transition-all backdrop-blur-sm flex items-center gap-2"
           >
             {language === 'tr' ? 'Başla' : 'Get Started'}

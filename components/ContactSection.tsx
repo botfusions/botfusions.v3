@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import emailjs from '@emailjs/browser';
@@ -26,23 +26,35 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
+  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
 
   // Form validation
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
+    // Name validation
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
+    } else if (formData.name.length > 100) {
+      newErrors.name = 'Name is too long (max 100 characters)';
     }
 
+    // Email validation - strengthened
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
       newErrors.email = 'Invalid email format';
+    } else if (formData.email.includes('\n') || formData.email.includes('\r')) {
+      newErrors.email = 'Invalid email format';
+    } else if (formData.email.length > 254) {
+      newErrors.email = 'Email is too long';
     }
 
+    // Message validation
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
+    } else if (formData.message.length > 5000) {
+      newErrors.message = 'Message is too long (max 5000 characters)';
     }
 
     setErrors(newErrors);
@@ -50,10 +62,18 @@ const ContactSection: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
+      return;
+    }
+
+    // Rate limiting: 1 submission per 60 seconds
+    const now = Date.now();
+    if (now - lastSubmitTime < 60000) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please wait 60 seconds before submitting again.');
       return;
     }
 
@@ -82,13 +102,16 @@ const ContactSection: React.FC = () => {
       setSubmitMessage('Message sent successfully! We\'ll get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
       setErrors({});
+      setLastSubmitTime(now);
 
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
     } catch (error) {
-      console.error('Email send error:', error);
+      if (import.meta.env.MODE === 'development') {
+        console.error('Email send error:', error);
+      }
       setSubmitStatus('error');
       setSubmitMessage('Failed to send message. Please try again or email us directly at info@botfusions.com');
     } finally {

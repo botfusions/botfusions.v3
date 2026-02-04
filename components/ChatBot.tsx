@@ -53,9 +53,30 @@ const ChatBot: React.FC = () => {
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
+    // Input validation
+    const trimmedMessage = inputMessage.trim();
+    if (trimmedMessage.length === 0) return;
+    if (trimmedMessage.length > 1000) {
+      const errorMsg: Message = {
+        id: Date.now().toString(),
+        text: language === 'tr'
+          ? 'Mesaj çok uzun (maksimum 1000 karakter)'
+          : 'Message too long (max 1000 characters)',
+        sender: 'bot',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMsg]);
+      return;
+    }
+
+    // Sanitize input - remove potentially dangerous characters
+    const sanitizedMessage = trimmedMessage
+      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      .replace(/<[^>]+>/g, '');
+
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputMessage,
+      text: sanitizedMessage,
       sender: 'user',
       timestamp: new Date()
     };
@@ -72,7 +93,7 @@ const ChatBot: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: inputMessage,
+          message: sanitizedMessage,
           language: language,
           timestamp: new Date().toISOString()
         })
@@ -96,7 +117,9 @@ const ChatBot: React.FC = () => {
 
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
-      console.error('Chat error:', error);
+      if (import.meta.env.MODE === 'development') {
+        console.error('Chat error:', error);
+      }
 
       // Error message
       const errorMessage: Message = {

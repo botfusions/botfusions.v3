@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 
@@ -171,10 +172,10 @@ const BlogSection: React.FC = () => {
                   {post.desc}
                 </p>
                 
-                <a href="#" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text group-hover:opacity-80 transition-opacity">
+                <Link to={`/blog/${post.id}`} className="inline-flex items-center gap-2 text-sm font-semibold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text group-hover:opacity-80 transition-opacity">
                   {t('blog.readMore')}
                   <ArrowRight size={16} className="text-pink-500" />
-                </a>
+                </Link>
               </div>
             </article>
           ))}
