@@ -7,6 +7,7 @@ import ProcessSection from './ProcessSection';
 import BenefitsSection from './BenefitsSection';
 import TestimonialsSection from './TestimonialsSection';
 import BlogSection from './BlogSection';
+import FAQSection from './FAQSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 import ChatBot from './ChatBot';
@@ -24,6 +25,7 @@ const HomePage: React.FC = () => {
         <TestimonialsSection />
         <BlogSection />
         <ContactSection />
+        <FAQSection />
       </main>
       <Footer />
       <ChatBot />

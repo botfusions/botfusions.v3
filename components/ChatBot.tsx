@@ -87,7 +87,12 @@ const ChatBot: React.FC = () => {
 
     try {
       // Send message to n8n webhook
-      const response = await fetch('https://n8n.botfusions.com/webhook/ca07d73b-ea53-4ee9-ba1a-dd9fede1706f', {
+      const webhookUrl = import.meta.env.VITE_CHATBOT_WEBHOOK_URL;
+      if (!webhookUrl) {
+        throw new Error('Chatbot webhook URL not configured');
+      }
+
+      const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

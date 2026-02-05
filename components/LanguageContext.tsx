@@ -172,6 +172,23 @@ const translations = {
     'contact.info.phone': 'Phone',
     'contact.info.address': 'Address',
 
+    // FAQ Section
+    'faq.title': 'We\'ve Got the Answers You\'re Looking For',
+    'faq.subtitle': 'Quick answers to your AI automation questions.',
+    'faq.q1.question': 'How can AI automation help my business?',
+    'faq.q1.answer': 'AI automation eliminates repetitive tasks, improves efficiency, and reduces errors. It allows your team to focus on high-value work while increasing productivity and lowering operational costs.',
+    'faq.q2.question': 'Is AI automation difficult to integrate?',
+    'faq.q2.answer': 'No! Our AI solutions are designed for seamless integration with your existing tools and workflows. We provide step-by-step guidance to ensure a smooth and hassle-free setup.',
+    'faq.q3.question': 'What industries can benefit from AI automation?',
+    'faq.q3.answer': 'AI automation is beneficial across various industries, including marketing, sales, finance, healthcare, customer support, and operations. Any business looking to improve efficiency can leverage AI.',
+    'faq.q4.question': 'Do I need technical knowledge to use AI automation?',
+    'faq.q4.answer': 'Not at all! Our platform is user-friendly and built for all skill levels. We provide onboarding, tutorials, and customer support to ensure you can easily navigate and use the system.',
+    'faq.q5.question': 'What kind of support do you offer?',
+    'faq.q5.answer': 'We offer comprehensive support, including onboarding assistance, troubleshooting, and ongoing updates. Our team is available to help with any questions or technical issues you may have.',
+    'faq.cta.title': 'Let AI do the Work so you can Scale Faster',
+    'faq.cta.subtitle': 'Book a Call Today and Start Automating',
+    'faq.cta.button': 'Book a Call',
+
     // Footer
     'footer.slogan': 'Botfusions – Automate Smarter, Optimize Faster, and Grow Stronger.',
     'footer.subscribe': 'Subscribe',
@@ -344,6 +361,23 @@ const translations = {
     'contact.info.phone': 'Telefon',
     'contact.info.address': 'Adres',
 
+    // FAQ Section
+    'faq.title': 'Aradığınız Cevapları Bulun',
+    'faq.subtitle': 'Yapay zeka otomasyon sorularınıza hızlı cevaplar.',
+    'faq.q1.question': 'Yapay zeka otomasyonu işletmeme nasıl yardımcı olabilir?',
+    'faq.q1.answer': 'Yapay zeka otomasyonu tekrarlayan görevleri ortadan kaldırır, verimliliği artırır ve hataları azaltır. Ekibinizin yüksek değerli işlere odaklanmasını sağlarken üretkenliği artırır ve operasyonel maliyetleri düşürür.',
+    'faq.q2.question': 'Yapay zeka otomasyonunu entegre etmek zor mu?',
+    'faq.q2.answer': 'Hayır! Yapay zeka çözümlerimiz mevcut araçlarınız ve iş akışlarınızla kusursuz entegrasyon için tasarlanmıştır. Sorunsuz ve zahmetsiz bir kurulum sağlamak için adım adım rehberlik sunuyoruz.',
+    'faq.q3.question': 'Hangi sektörler yapay zeka otomasyonundan faydalanabilir?',
+    'faq.q3.answer': 'Yapay zeka otomasyonu pazarlama, satış, finans, sağlık, müşteri desteği ve operasyonlar dahil olmak üzere çeşitli sektörlerde faydalıdır. Verimliliği artırmak isteyen her işletme yapay zekadan yararlanabilir.',
+    'faq.q4.question': 'Yapay zeka otomasyonunu kullanmak için teknik bilgiye ihtiyacım var mı?',
+    'faq.q4.answer': 'Hiç de değil! Platformumuz kullanıcı dostu ve tüm beceri seviyeleri için tasarlanmıştır. Sistemi kolayca kullanabilmeniz için işe alım, eğitim ve müşteri desteği sağlıyoruz.',
+    'faq.q5.question': 'Ne tür bir destek sunuyorsunuz?',
+    'faq.q5.answer': 'İşe alım yardımı, sorun giderme ve sürekli güncellemeler dahil olmak üzere kapsamlı destek sunuyoruz. Ekibimiz, olabilecek sorular veya teknik sorunlarda yardımcı olmak için hazırdır.',
+    'faq.cta.title': 'Yapay Zeka İşi Yapsın, Siz Daha Hızlı Büyüyün',
+    'faq.cta.subtitle': 'Bugün Bir Görüşme Planlayın ve Otomasyona Başlayın',
+    'faq.cta.button': 'Görüşme Planla',
+
     // Footer
     'footer.slogan': 'Botfusions – Daha Akıllı Otomatikleştir, Daha Hızlı Optimize Et, Daha Güçlü Büyü.',
     'footer.subscribe': 'Abone Ol',
@@ -358,7 +392,7 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('tr'); // Default to TR or EN as preferred
+  const [language, setLanguage] = useState<Language>('en'); // Default language: English
 
   const t = (key: string) => {
     return (translations[language] as any)[key] || key;

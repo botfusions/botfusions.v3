@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
           {t('hero.cta.services')}
         </a>
         <Link
-          to="/galaxy"
+          to="/"
           className="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 hover:from-purple-600/30 hover:to-pink-600/30 border border-purple-500/30 text-white rounded-xl font-medium transition-all backdrop-blur-sm"
         >
           <Sparkles size={18} className="group-hover:rotate-12 transition-transform" />

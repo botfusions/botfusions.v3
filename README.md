@@ -13,6 +13,7 @@
 
 ## 📋 İçindekiler
 
+- [Son Güncellemeler](#-son-güncellemeler)
 - [Hakkında](#-hakkında)
 - [Özellikler](#-özellikler)
 - [Teknolojiler](#-teknolojiler)
@@ -24,6 +25,26 @@
 - [Katkıda Bulunma](#-katkıda-bulunma)
 - [Lisans](#-lisans)
 - [İletişim](#-iletişim)
+
+## 🎉 Son Güncellemeler
+
+### 🔒 Güvenlik İyileştirmeleri (OWASP Top 10:2025)
+- ✅ **XSS Koruması** - DOMPurify ile tüm HTML içerik sanitizasyonu
+- ✅ **Rate Limiting** - localStorage tabanlı 60 saniyelik form cooldown
+- ✅ **Supply Chain Security** - package-lock.json dependency integrity
+- ✅ **Environment Security** - .env.local ve zero-tolerance git policy
+- ✅ **Input Sanitization** - Tüm form ve chat girdileri güvenli hale getirildi
+
+### ✨ Yeni Özellikler
+- ✅ **FAQ Section** - Accordion animasyonlu sık sorulan sorular bölümü
+- ✅ **AI ChatBot** - n8n webhook entegrasyonu ile akıllı sohbet botu
+- ✅ **Click-to-Call** - Tel: link ile doğrudan arama özelliği
+- ✅ **Varsayılan Dil** - İngilizce varsayılan dil olarak ayarlandı
+
+### 🔧 Teknik İyileştirmeler
+- ✅ Backend-only API key'ler için VITE_ prefix kaldırıldı
+- ✅ .gitignore ile tüm environment dosyaları korunuyor
+- ✅ HMR (Hot Module Replacement) optimizasyonları
 
 ## 🚀 Hakkında
 
@@ -39,18 +60,22 @@ Yapay zeka otomasyonunu işletmelerin parmaklarının ucuna getirerek, tekrarlay
 ### 🎨 Frontend Özellikleri
 - ✅ **Modern React 19** - En yeni React özellikleri
 - ✅ **TypeScript** - Tip güvenli kod
-- ✅ **3D Galaxy Viewer** - Three.js ile interaktif galaksi görselleştirme
-- ✅ **React Router** - Çoklu sayfa navigasyonu (/, /galaxy)
+- ✅ **3D Galaxy Viewer** - Three.js ile interaktif galaksi görselleştirme (Landing Page)
+- ✅ **React Router** - Çoklu sayfa navigasyonu (/, /home, /blog/:id)
+- ✅ **Blog Detail Pages** - Tam içerikli blog detay sayfaları
+- ✅ **FAQ Section** - Accordion animasyonlu sık sorulan sorular
 - ✅ **Responsive Design** - Tüm cihazlarda mükemmel görünüm
-- ✅ **Çoklu Dil Desteği** - Türkçe/İngilizce (TR/EN)
+- ✅ **Çoklu Dil Desteği** - Türkçe/İngilizce (TR/EN) - Varsayılan: English
 - ✅ **Smooth Animations** - Framer Motion ile akıcı animasyonlar
 - ✅ **Dark Mode** - Modern koyu tema
 - ✅ **Glass Morphism** - Modern cam efekti tasarımlar
 - ✅ **Dynamic Blog System** - JSON tabanlı dinamik blog yönetimi
+- ✅ **Click-to-Call** - Tel: link ile doğrudan arama
 
 ### 📧 Backend Entegrasyonları
 - ✅ **Contact Form** - EmailJS entegrasyonu ile çalışan iletişim formu
 - ✅ **Newsletter Subscription** - Email abonelik sistemi
+- ✅ **AI ChatBot** - n8n webhook entegrasyonu ile akıllı sohbet botu
 - ✅ **Form Validation** - Gerçek zamanlı form doğrulama
 - ✅ **Loading States** - Kullanıcı dostu yükleme durumları
 - ✅ **Success/Error Messages** - Anlaşılır geri bildirimler
@@ -61,6 +86,19 @@ Yapay zeka otomasyonunu işletmelerin parmaklarının ucuna getirerek, tekrarlay
 - ✅ **Structured Data** - Schema.org markup
 - ✅ **Meta Tags** - Kapsamlı meta tag'ler
 - ✅ **Open Graph** - Sosyal medya paylaşımları için
+
+### 🔒 Güvenlik
+- ✅ **OWASP Top 10:2025 Uyumlu** - Kapsamlı güvenlik denetimi tamamlandı
+- ✅ **XSS Koruması** - DOMPurify ile HTML içerik sanitizasyonu
+- ✅ **Input Sanitization** - Tüm form ve chat girdileri temizlenir
+- ✅ **Rate Limiting** - localStorage tabanlı form spam koruması (60s cooldown)
+- ✅ **Supply Chain Security** - package-lock.json ile dependency integrity
+- ✅ **Environment Security** - .env.local ve .gitignore ile API key koruması
+- ✅ **Security Headers** - CSP, X-Frame-Options, X-Content-Type-Options
+- ✅ **Input Validation** - Güçlendirilmiş email ve form validasyonu
+- ✅ **localStorage Security** - Type checking ve veri doğrulama
+- ✅ **Error Handling** - Production'da güvenli hata yönetimi
+- ✅ **No Secrets in Git** - Zero-tolerance policy for credentials
 
 ## 🛠 Teknolojiler
 
@@ -81,8 +119,13 @@ Yapay zeka otomasyonunu işletmelerin parmaklarının ucuna getirerek, tekrarlay
 - **Lucide React 0.563.0** - Icon Library
 - **Custom CSS** - Glass morphism & custom styles
 
+### Security & Validation
+- **DOMPurify 3.3.0** - XSS protection and HTML sanitization
+- **@types/dompurify** - TypeScript support for DOMPurify
+
 ### Backend Services
 - **EmailJS** - Email service integration
+- **n8n Webhook** - AI ChatBot integration
 - **Vite Env Variables** - Environment management
 
 ### Dev Tools
@@ -127,7 +170,20 @@ cp .env.example .env.local
 VITE_EMAILJS_SERVICE_ID=your_service_id_here
 VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
 VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
+
+# ChatBot Configuration (n8n Webhook)
+VITE_CHATBOT_WEBHOOK_URL=your_n8n_webhook_url_here
+
+# Backend-Only Keys (NO VITE_ prefix - not exposed to client)
+AGENTMAIL_API_KEY=your_agentmail_api_key_here
+AGENTMAIL_EMAIL=your_email@agentmail.to
 ```
+
+> **⚠️ Güvenlik Notu:**
+> - `VITE_` prefix = Client-side'da görünür
+> - No prefix = Backend-only, client'a gönderilmez
+> - `.env.local` `.gitignore`'da olmalı
+> - **ASLA** API key'leri git'e commit etmeyin!
 
 5. **Development server'ı başlatın**
 ```bash
@@ -162,6 +218,26 @@ npm run dev
    - Service ID, Template ID ve Public Key'i kopyalayın
    - `.env.local` dosyasına yapıştırın
 
+### ChatBot (n8n) Kurulumu
+
+1. **n8n Workflow Oluşturun**
+   - [n8n](https://n8n.io/) hesabınızda yeni workflow oluşturun
+   - Webhook node ekleyin
+   - AI/LLM node'ları ile yanıt logiği tasarlayın
+
+2. **Webhook URL'ini Alın**
+   - Webhook node'undan Production URL'i kopyalayın
+   - Örnek: `https://n8n.yourdomain.com/webhook/YOUR_ID`
+
+3. **Environment Variable Ekleyin**
+   ```env
+   VITE_CHATBOT_WEBHOOK_URL=https://n8n.yourdomain.com/webhook/YOUR_ID
+   ```
+
+4. **ChatBot Otomatik Aktif**
+   - Webhook URL tanımlandığında ChatBot otomatik aktif olur
+   - Sağ alt köşede sohbet ikonu görünür
+
 ### Vite Konfigürasyonu
 
 [vite.config.ts](vite.config.ts) dosyasında özelleştirmeler:
@@ -193,12 +269,13 @@ npm run preview
 
 ### Sayfalar
 
-Uygulama iki ana sayfa içerir:
+Uygulama üç ana sayfa içerir:
 
-- **Ana Sayfa** (`/`) - Landing page, özellikler, blog, iletişim
-- **Galaxy Viewer** (`/galaxy`) - İnteraktif 3D galaksi görselleştirme
+- **Galaxy Viewer** (`/`) - İnteraktif 3D galaksi görselleştirme (Landing Page)
+- **Ana Sayfa** (`/home`) - Özellikler, blog, iletişim
+- **Blog Detay** (`/blog/:id`) - Tam içerikli blog makaleleri
 
-Galaxy sayfasına ana sayfadaki "Galaksiyi Keşfet" butonundan erişebilirsiniz.
+Galaxy landing page'den "Başla" butonuyla ana sayfaya geçiş yapılır.
 
 ### Component Kullanımı
 
@@ -265,19 +342,22 @@ Yeni blog eklemek için JSON dosyasına yeni bir obje ekleyin, otomatik olarak g
 Bot_Web/
 ├── components/                    # React componentleri
 │   ├── galaxy/                    # 🌌 Galaxy viewer componentleri
-│   │   ├── GalaxyPage.tsx        # Ana galaxy sayfası
+│   │   ├── GalaxyPage.tsx        # Landing page (3D galaksi)
 │   │   ├── GalaxyGenerator.tsx   # 3D galaksi üreteci
 │   │   ├── ControlsPanel.tsx     # Parametre kontrolleri
 │   │   ├── Toolbar.tsx           # Toolbar (screenshot, reset, vb.)
 │   │   └── types.ts              # TypeScript tipleri
 │   ├── HomePage.tsx               # Ana sayfa wrapper
+│   ├── BlogDetailPage.tsx        # 📝 Blog detay sayfası (DOMPurify XSS koruması)
 │   ├── BenefitsSection.tsx
 │   ├── BlogSection.tsx           # 📰 Dinamik blog sistemi
-│   ├── ContactSection.tsx        # ✨ İşlevsel contact form
+│   ├── ContactSection.tsx        # ✨ İşlevsel contact form (localStorage rate limiting)
+│   ├── ChatBot.tsx               # 💬 AI ChatBot (n8n webhook, input sanitization)
+│   ├── FAQSection.tsx            # ❓ Accordion FAQ bölümü (Framer Motion)
 │   ├── Features.tsx
 │   ├── Footer.tsx                # ✨ İşlevsel newsletter
-│   ├── Hero.tsx                  # Galaxy viewer butonu ile
-│   ├── LanguageContext.tsx       # 🌐 Çoklu dil desteği
+│   ├── Hero.tsx
+│   ├── LanguageContext.tsx       # 🌐 Çoklu dil desteği (Varsayılan: EN)
 │   ├── Navbar.tsx
 │   ├── ProcessSection.tsx
 │   ├── SeoGeoSection.tsx
@@ -286,7 +366,7 @@ Bot_Web/
 ├── public/
 │   └── data/
 │       └── blogs.json            # 📝 Blog verileri (TR/EN)
-├── App.tsx                       # React Router setup
+├── App.tsx                       # React Router setup (/, /home, /blog/:id)
 ├── index.tsx                     # Entry point
 ├── index.html                    # HTML template
 ├── index.css                     # Global styles + glass effects
@@ -310,7 +390,12 @@ Bot_Web/
    - `VITE_EMAILJS_SERVICE_ID`
    - `VITE_EMAILJS_TEMPLATE_ID`
    - `VITE_EMAILJS_PUBLIC_KEY`
+   - `VITE_CHATBOT_WEBHOOK_URL` (opsiyonel - ChatBot için)
+   - `AGENTMAIL_API_KEY` (backend için - VITE_ prefix yok!)
+   - `AGENTMAIL_EMAIL` (backend için)
 4. **Deploy** butonuna tıklayın
+
+> **⚠️ Önemli:** Backend-only key'ler için `VITE_` prefix kullanmayın!
 
 ### Netlify
 
@@ -330,6 +415,25 @@ npm run build
 ```
 
 ## 🔧 Sorun Giderme
+
+### Git'e API Key Commit Edildi
+
+Eğer yanlışlıkla `.env.local` veya API key'leri commit ettiyseniz:
+
+```bash
+# 1. Dosyayı git history'den tamamen kaldır
+git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch .env.local" \
+  --prune-empty --tag-name-filter cat -- --all
+
+# 2. Force push (dikkatli kullanın!)
+git push origin --force --all
+
+# 3. API key'leri DERHAL yenileyin (EmailJS, n8n, vb.)
+# Eski key'ler artık güvenli değil!
+```
+
+> **⚠️ Önemli:** Bu proje **zero-tolerance** politikası uygular. API key'ler ASLA git'e commit edilmemelidir.
 
 ### Avast Antivirüs False Positive
 

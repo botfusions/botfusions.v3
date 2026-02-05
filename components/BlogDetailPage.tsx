@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import DOMPurify from 'dompurify';
 import { useLanguage } from './LanguageContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -172,10 +173,17 @@ const BlogDetailPage: React.FC = () => {
                 }
 
                 // Regular paragraph
+                const sanitized = DOMPurify.sanitize(paragraph, {
+                  ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'br'],
+                  ALLOWED_ATTR: ['href', 'target', 'rel']
+                });
+
                 return (
-                  <p key={index} className="text-white/80 mb-6 leading-relaxed">
-                    {paragraph}
-                  </p>
+                  <p
+                    key={index}
+                    className="text-white/80 mb-6 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: sanitized }}
+                  />
                 );
               })}
             </div>

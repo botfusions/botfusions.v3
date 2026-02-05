@@ -16,7 +16,7 @@ interface FormErrors {
 }
 
 const ContactSection: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -26,7 +26,6 @@ const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState('');
-  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
 
   // Form validation
   const validateForm = (): boolean => {
@@ -69,11 +68,16 @@ const ContactSection: React.FC = () => {
       return;
     }
 
-    // Rate limiting: 1 submission per 60 seconds
+    // Rate limiting: 1 submission per 60 seconds (localStorage-based)
+    const lastSubmitTime = parseInt(localStorage.getItem('contact_last_submit') || '0');
     const now = Date.now();
     if (now - lastSubmitTime < 60000) {
       setSubmitStatus('error');
-      setSubmitMessage('Please wait 60 seconds before submitting again.');
+      setSubmitMessage(
+        language === 'tr'
+          ? 'Lütfen 60 saniye bekleyin.'
+          : 'Please wait 60 seconds before submitting again.'
+      );
       return;
     }
 
@@ -102,7 +106,7 @@ const ContactSection: React.FC = () => {
       setSubmitMessage('Message sent successfully! We\'ll get back to you soon.');
       setFormData({ name: '', email: '', message: '' });
       setErrors({});
-      setLastSubmitTime(now);
+      localStorage.setItem('contact_last_submit', now.toString());
 
       // Reset success message after 5 seconds
       setTimeout(() => {

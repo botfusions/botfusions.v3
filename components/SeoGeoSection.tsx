@@ -38,9 +38,6 @@ const SeoGeoSection: React.FC = () => {
         <h2 className="text-4xl md:text-6xl font-bold mb-4">
           {t('seo.title.part1')} <span className="text-cyan-400">{t('seo.title.part2')}</span>
         </h2>
-        <h2 className="text-4xl md:text-6xl font-bold text-cyan-400">
-           {t('seo.title.part3')}
-        </h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -152,7 +149,7 @@ const SeoGeoSection: React.FC = () => {
         {/* Right: Feature List */}
         <div>
           <h3 className="text-3xl font-bold mb-6">
-             {t('seo.section.title.part1')} <span className="text-cyan-400">{t('seo.section.title.part2')}</span> {t('seo.section.title.part3')}
+             {t('seo.section.title.part1')} <span className="text-cyan-400">{t('seo.section.title.part2')}</span>
           </h3>
           <p className="text-gray-400 text-lg mb-10 leading-relaxed">
              {t('seo.section.desc')}
