@@ -11,6 +11,10 @@ interface Message {
 
 const ChatBot: React.FC = () => {
   const { t, language } = useLanguage();
+
+  // 🔧 TEMPORARY: Disable chatbot until n8n webhook is fixed
+  const [isMaintenance] = useState(true);
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -153,15 +157,24 @@ const ChatBot: React.FC = () => {
     <>
       {/* Floating Chat Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 max-sm:bottom-4 max-sm:right-4 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${isOpen ? 'scale-0' : 'scale-100'}`}
+        onClick={() => {
+          if (isMaintenance) {
+            alert(language === 'tr'
+              ? 'ChatBot bakımda. Lütfen daha sonra tekrar deneyin veya info@botfusions.com adresinden bize ulaşın.'
+              : 'ChatBot under maintenance. Please try again later or contact us at info@botfusions.com.');
+          } else {
+            setIsOpen(!isOpen);
+          }
+        }}
+        className={`fixed bottom-6 right-6 max-sm:bottom-4 max-sm:right-4 z-50 w-14 h-14 rounded-full ${isMaintenance ? 'bg-gray-600' : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500'} text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${isOpen ? 'scale-0' : 'scale-100'}`}
         aria-label="Open chat"
+        title={isMaintenance ? (language === 'tr' ? 'ChatBot bakımda' : 'ChatBot under maintenance') : (language === 'tr' ? 'Sohbet başlat' : 'Start chat')}
       >
-        <MessageCircle size={24} />
+        {isMaintenance ? <span className="text-xs">🔧</span> : <MessageCircle size={24} />}
       </button>
 
       {/* Chat Window */}
-      {isOpen && (
+      {isOpen && !isMaintenance && (
         <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] sm:max-w-[calc(100vw-3rem)] sm:max-h-[calc(100vh-3rem)] max-sm:w-[calc(100vw-2rem)] max-sm:h-[calc(100vh-2rem)] max-sm:bottom-4 max-sm:right-4 flex flex-col bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden chatbot-container">
 
           {/* Header */}
