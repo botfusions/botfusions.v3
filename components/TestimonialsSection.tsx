@@ -58,9 +58,12 @@ const TestimonialsSection: React.FC = () => {
 
             {/* Profile */}
             <div className="flex items-center gap-4">
-              <img 
-                src={item.image} 
-                alt={item.name} 
+              <img
+                src={item.image}
+                alt={item.name}
+                loading="lazy"
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-full object-cover border border-white/10"
               />
               <div>

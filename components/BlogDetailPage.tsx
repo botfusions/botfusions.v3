@@ -58,6 +58,32 @@ const BlogDetailPage: React.FC = () => {
       });
   }, [id]);
 
+  // Dynamic meta tags for SEO
+  useEffect(() => {
+    if (post) {
+      const title = post.title[language];
+      const desc = post.desc[language];
+      document.title = `${title} | Botfusions Blog`;
+
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', desc);
+
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', title);
+
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', desc);
+
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute('href', `https://botfusionsl.com/blog/${post.id}`);
+    }
+    return () => {
+      document.title = 'Botfusions - Intelligent Automation & AI Data Extraction';
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute('href', 'https://botfusionsl.com/');
+    };
+  }, [post, language]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -86,6 +112,19 @@ const BlogDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black">
+      {post && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": post.title[language],
+          "description": post.desc[language],
+          "datePublished": post.date.en,
+          "author": { "@type": "Organization", "name": "Botfusions", "url": "https://botfusionsl.com" },
+          "publisher": { "@type": "Organization", "name": "Botfusions", "logo": { "@type": "ImageObject", "url": "https://botfusionsl.com/logo.png" } },
+          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://botfusionsl.com/blog/${post.id}` },
+          "inLanguage": language === 'tr' ? 'tr-TR' : 'en-US'
+        })}} />
+      )}
       <Navbar />
 
       <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">

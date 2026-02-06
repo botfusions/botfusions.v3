@@ -33,6 +33,10 @@ dist-ssr
 # Claude Code
 .claude/
 
+# Sensitive documentation (contains API keys / internal configs)
+SMTP_CONFIG.md
+CODEBASE.md
+
 # Temporary files
 nul
 *.zip
