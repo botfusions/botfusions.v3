@@ -172,8 +172,9 @@ async function generateResponse(message, context, language) {
       (language === 'tr' ? 'Yanit olusturulamadi.' : 'Could not generate a response.');
   } catch (err) {
     console.error('LLM error:', err.message);
-    // Temporary debug - return actual error
-    return `[DEBUG] Error: ${err.message} | Key exists: ${!!process.env.OPENROUTER_API_KEY} | Model: ${process.env.OPENROUTER_MODEL || 'default'}`;
+    return language === 'tr'
+      ? 'Bir hata olustu. Lutfen tekrar deneyin.'
+      : 'An error occurred. Please try again.';
   }
 }
 
@@ -269,20 +270,9 @@ export default async (req) => {
   } catch (err) {
     console.error('Chat function error:', err);
 
-    // Debug info (remove in production later)
-    const debugInfo = {
-      hasOpenRouterKey: !!process.env.OPENROUTER_API_KEY,
-      hasOpenAIKey: !!process.env.OPENAI_API_KEY,
-      hasSupabaseUrl: !!process.env.SUPABASE_URL,
-      hasSupabaseKey: !!process.env.SUPABASE_SERVICE_KEY,
-      error: err.message
-    };
-    console.error('Debug:', JSON.stringify(debugInfo));
-
     return new Response(
       JSON.stringify({
-        response: 'Bir hata olustu. Lutfen daha sonra tekrar deneyin veya info@botfusions.com adresinden bize ulasin.',
-        debug: debugInfo
+        response: 'Bir hata olustu. Lutfen daha sonra tekrar deneyin veya info@botfusions.com adresinden bize ulasin.'
       }),
       { status: 500, headers: CORS_HEADERS }
     );
