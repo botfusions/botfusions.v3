@@ -24,6 +24,7 @@ const ChatBot: React.FC = () => {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId] = useState(() => `web-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -97,6 +98,7 @@ const ChatBot: React.FC = () => {
         body: JSON.stringify({
           message: sanitizedMessage,
           language: language,
+          sessionId: sessionId,
           timestamp: new Date().toISOString()
         })
       });

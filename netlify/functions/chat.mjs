@@ -177,6 +177,43 @@ async function generateResponse(message, context, language) {
   }
 }
 
+// ─── Save Chat History to Supabase (n8n_chat_histories_botfusion) ───
+async function saveChatHistory(sessionId, userMessage, botResponse) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !key) return;
+
+  try {
+    const rows = [
+      {
+        session_id: sessionId,
+        message: { type: 'human', data: { content: userMessage } }
+      },
+      {
+        session_id: sessionId,
+        message: { type: 'ai', data: { content: botResponse } }
+      }
+    ];
+
+    const res = await fetch(`${url}/rest/v1/n8n_chat_histories_botfusion`, {
+      method: 'POST',
+      headers: {
+        'apikey': key,
+        'Authorization': `Bearer ${key}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(rows)
+    });
+
+    if (!res.ok) {
+      console.error('Chat history save error:', res.status, await res.text());
+    }
+  } catch (err) {
+    console.error('Chat history error:', err.message);
+  }
+}
+
 // ─── Main Handler (Netlify Functions v2) ───
 export default async (req) => {
   // CORS preflight
@@ -196,6 +233,7 @@ export default async (req) => {
     const body = await req.json();
     const message = (body.message || '').trim();
     const language = body.language || 'en';
+    const sessionId = body.sessionId || `web-${Date.now()}`;
 
     // Validation
     if (!message) {
@@ -220,6 +258,9 @@ export default async (req) => {
 
     // 3. Generate AI response
     const response = await generateResponse(message, context, language);
+
+    // 4. Save chat history (non-blocking)
+    saveChatHistory(sessionId, message, response).catch(() => {});
 
     return new Response(
       JSON.stringify({ response }),
