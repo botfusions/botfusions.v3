@@ -162,8 +162,9 @@ async function generateResponse(message, context, language) {
     });
 
     if (!res.ok) {
-      console.error('OpenRouter error:', res.status, await res.text());
-      throw new Error('LLM request failed');
+      const errText = await res.text();
+      console.error('OpenRouter error:', res.status, errText);
+      throw new Error(`OpenRouter ${res.status}: ${errText.substring(0, 200)}`);
     }
 
     const data = await res.json();
@@ -171,9 +172,8 @@ async function generateResponse(message, context, language) {
       (language === 'tr' ? 'Yanit olusturulamadi.' : 'Could not generate a response.');
   } catch (err) {
     console.error('LLM error:', err.message);
-    return language === 'tr'
-      ? 'Bir hata olustu. Lutfen tekrar deneyin.'
-      : 'An error occurred. Please try again.';
+    // Temporary debug - return actual error
+    return `[DEBUG] Error: ${err.message} | Key exists: ${!!process.env.OPENROUTER_API_KEY} | Model: ${process.env.OPENROUTER_MODEL || 'default'}`;
   }
 }
 
