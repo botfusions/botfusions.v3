@@ -147,7 +147,7 @@ async function generateResponse(message, context, language) {
       headers: {
         'Authorization': `Bearer ${key}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://botfusionsl.com',
+        'HTTP-Referer': 'https://botfusions.com',
         'X-Title': 'Botfusions ChatBot'
       },
       body: JSON.stringify({
@@ -268,9 +268,21 @@ export default async (req) => {
     );
   } catch (err) {
     console.error('Chat function error:', err);
+
+    // Debug info (remove in production later)
+    const debugInfo = {
+      hasOpenRouterKey: !!process.env.OPENROUTER_API_KEY,
+      hasOpenAIKey: !!process.env.OPENAI_API_KEY,
+      hasSupabaseUrl: !!process.env.SUPABASE_URL,
+      hasSupabaseKey: !!process.env.SUPABASE_SERVICE_KEY,
+      error: err.message
+    };
+    console.error('Debug:', JSON.stringify(debugInfo));
+
     return new Response(
       JSON.stringify({
-        response: 'Bir hata olustu. Lutfen daha sonra tekrar deneyin veya info@botfusions.com adresinden bize ulasin.'
+        response: 'Bir hata olustu. Lutfen daha sonra tekrar deneyin veya info@botfusions.com adresinden bize ulasin.',
+        debug: debugInfo
       }),
       { status: 500, headers: CORS_HEADERS }
     );
