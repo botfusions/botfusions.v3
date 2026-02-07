@@ -51,7 +51,10 @@
 | **3D** | Three.js, @react-three/fiber, @react-three/drei |
 | **UI** | TailwindCSS, Framer Motion, Lucide Icons |
 | **Security** | DOMPurify, CSP Headers |
-| **Services** | EmailJS, n8n Webhooks |
+| **Backend** | Netlify Functions (serverless) |
+| **AI/ML** | OpenRouter (Claude Haiku 4.5), OpenAI Embeddings |
+| **Database** | Supabase (Postgres + pgvector) |
+| **Services** | EmailJS |
 | **Routing** | React Router DOM 7 |
 
 ## Getting Started
@@ -90,11 +93,15 @@ VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 
-# ChatBot (optional)
-VITE_CHATBOT_WEBHOOK_URL=your_webhook_url
+# Backend-only (Netlify Functions - DO NOT use VITE_ prefix)
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_KEY=your_supabase_service_role_key
+OPENAI_API_KEY=your_openai_api_key
+OPENROUTER_API_KEY=your_openrouter_api_key
+OPENROUTER_MODEL=anthropic/claude-haiku-4.5  # Optional, defaults to Claude Haiku 4.5
 ```
 
-> `VITE_` prefix = client-side'da gorunur. Backend key'ler icin prefix kullanmayin ve hosting provider uzerinden tanimlayln.
+> **Onemli:** `VITE_` prefix'i client-side'da gorunur. Backend API key'leri icin ASLA `VITE_` kullanmayin ve sadece Netlify Dashboard > Environment Variables'dan tanimlayın.
 
 ## Pages
 
@@ -104,6 +111,38 @@ VITE_CHATBOT_WEBHOOK_URL=your_webhook_url
 | `/home` | Main Page | Ozellikler, blog, iletisim |
 | `/blog/:id` | Blog Detail | Tam icerikli blog makaleleri |
 
+## ChatBot Architecture
+
+AI destekli sohbet botu **RAG (Retrieval-Augmented Generation)** mimarisi kullanir:
+
+```
+User Message
+     ↓
+1. OpenAI Embeddings (text-embedding-ada-002)
+     ↓
+2. Supabase Vector Search (pgvector, cosine similarity)
+     ↓
+3. OpenRouter LLM (Claude Haiku 4.5)
+     ↓
+4. Chat History Save (Supabase - n8n uyumlu)
+     ↓
+Response
+```
+
+### Ozellikler
+
+- **Strict Scope**: Sadece Botfusions bilgi tabanindaki sorulari yanitlar
+- **Knowledge Base**: Supabase `botfusions_sss` tablosunda vektorize edilmis dokuman arama
+- **Smart Responses**: Fiyat sorularinda otomatik iletisim bilgisi yonlendirmesi
+- **Chat History**: n8n `chat_histories` formatiyla uyumlu Postgres kaydi
+- **Serverless**: Netlify Functions ile tamamen sunucusuz mimari
+
+### Dosyalar
+
+- `netlify/functions/chat.mjs` - Serverless chatbot endpoint (`/api/chat`)
+- `supabase/match_documents.sql` - Vector similarity search fonksiyonu
+- `components/ChatBot.tsx` - Frontend UI komponenti
+
 ## Project Structure
 
 ```
@@ -112,13 +151,19 @@ Bot_Web/
 │   ├── galaxy/          # 3D Galaxy viewer
 │   ├── HomePage.tsx     # Ana sayfa
 │   ├── BlogDetailPage.tsx
-│   ├── ChatBot.tsx      # AI sohbet botu
+│   ├── ChatBot.tsx      # AI sohbet botu UI
 │   ├── ContactSection.tsx
 │   ├── LanguageContext.tsx  # i18n
 │   └── ...
+├── netlify/
+│   └── functions/
+│       └── chat.mjs     # Serverless chatbot RAG pipeline
+├── supabase/
+│   └── match_documents.sql  # Vector search function
 ├── public/data/         # Blog JSON verileri
 ├── App.tsx              # Router setup
 ├── index.html           # HTML + security headers
+├── netlify.toml         # Netlify configuration
 ├── vite.config.ts
 └── package.json
 ```
@@ -136,8 +181,15 @@ Bot_Web/
    - `VITE_EMAILJS_SERVICE_ID`
    - `VITE_EMAILJS_TEMPLATE_ID`
    - `VITE_EMAILJS_PUBLIC_KEY`
-   - `VITE_CHATBOT_WEBHOOK_URL` (opsiyonel)
-5. **Deploy site**
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_KEY`
+   - `OPENAI_API_KEY`
+   - `OPENROUTER_API_KEY`
+   - `OPENROUTER_MODEL` (opsiyonel, varsayilan: `anthropic/claude-haiku-4.5`)
+5. **Supabase Setup** (ChatBot icin):
+   - Supabase projenizde `supabase/match_documents.sql` dosyasini calistirin
+   - `botfusions_sss` tablosunu olusturun ve bilgi tabaninizi yukleyin
+6. **Deploy site**
 
 ### Manuel Deploy
 
@@ -180,7 +232,7 @@ Bu proje [MIT License](LICENSE) altinda lisanslanmistir.
 
 - Email: [info@botfusions.com](mailto:info@botfusions.com)
 - Phone: +90 850 302 74 60
-- Website: [botfusionsl.com](https://botfusionsl.com)
+- Website: [botfusions.com](https://botfusions.com)
 - Address: Istanbul, Turkey
 
 ---
