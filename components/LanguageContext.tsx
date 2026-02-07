@@ -63,8 +63,8 @@ const translations = {
 
     // SEO & GEO Section
     'seo.badge': 'SEO & GEO Services',
-    'seo.title.part1': 'Stand Out in',
-    'seo.title.part2': 'AI Search Engines',
+    'seo.title.part1': 'Turn Your Brand into an',
+    'seo.title.part2': 'AI-Recommended Authority',
     'seo.title.part3': '', 
     'seo.section.title.part1': 'Digital Awareness with',
     'seo.section.title.part2': 'SEO and GEO',
@@ -252,9 +252,9 @@ const translations = {
 
     // SEO & GEO Section
     'seo.badge': 'SEO & GEO Hizmetleri',
-    'seo.title.part1': 'AI Arama Motorlarında',
-    'seo.title.part2': 'Öne', // Blue part
-    'seo.title.part3': 'Çıkın', // Blue part continued or next line
+    'seo.title.part1': 'Markanızı',
+    'seo.title.part2': 'AI Tarafından Önerilen', // Blue part
+    'seo.title.part3': 'Otoriteye Dönüştürün', // Blue part continued or next line
     'seo.section.title.part1': 'SEO ve',
     'seo.section.title.part2': 'GEO', // Blue
     'seo.section.title.part3': 'ile Dijital Farkındalık',
