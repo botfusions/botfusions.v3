@@ -34,7 +34,8 @@
 - **3D Galaxy Landing Page** - Three.js ile interaktif galaksi gorsellestirme
 - **Multi-language** - Turkce/Ingilizce (varsayilan: EN)
 - **Blog System** - JSON tabanli dinamik blog yonetimi
-- **AI ChatBot** - n8n webhook entegrasyonu ile akilli sohbet botu
+- **AI ChatBot** - RAG pipeline (OpenAI embeddings + Supabase vector search + OpenRouter LLM) ile akilli sohbet botu
+- **Chat History** - Supabase'de konusma gecmisi kaydi (n8n uyumlu)
 - **Contact Form** - EmailJS entegrasyonu
 - **FAQ Section** - Accordion animasyonlu SSS bolumu
 - **Responsive Design** - Tum cihazlarda mukemmel gorunum

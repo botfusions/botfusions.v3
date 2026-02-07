@@ -26,8 +26,8 @@ export type Language = 'en' | 'tr';
 
 export const TRANSLATIONS = {
   en: {
-    tagline: "AI Answers.",
-    subTagline: "You're Inside Them. Anywhere in the Galaxy.",
+    tagline: "AI Answers. You're Inside Them.",
+    subTagline: "Anywhere in the Galaxy.",
     controls: {
       title: "Galaxy Controls",
       reset: "Reset Parameters",
