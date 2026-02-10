@@ -1,0 +1,249 @@
+{
+  "name": "My workflow 47",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ca07d73b-ea53-4ee9-ba1a-dd9fede1706f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1472,
+        -80
+      ],
+      "id": "2c117ddb-4b46-42ea-8a66-8385eec1d233",
+      "name": "Webhook",
+      "webhookId": "ca07d73b-ea53-4ee9-ba1a-dd9fede1706f"
+    },
+    {
+      "parameters": {
+        "jsCode": "const headers = $input.first().json.headers || {};\nconst method = $input.first().json.method || \n               $input.first().json.httpMethod || \n               headers['x-http-method'] || \n               'POST';\n\nconst isOptions = method.toUpperCase() === 'OPTIONS';\n\nconsole.log('Method:', method, 'isOptions:', isOptions);\n\nreturn [{\n  json: {\n    ...($input.first().json),\n    isOptions: isOptions,\n    detectedMethod: method.toUpperCase()\n  }\n}];"
+      },
+      "id": "b2ee1646-1fe5-4991-a543-ec3a866db463",
+      "name": "Method Check1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1152,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message }} ",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=# SYSTEM ROLE DEFINITION\nYou are \"Bot\", the official AI assistant of Botfusions company. Your mission is to provide fast, accurate, and helpful support to customers.\nHere is some additional information about Botfusions:\n{{ $json.body.message }}\n\n1. **PRIMARY**: Use Supabase Vector Store (semantic search in `botfusions_sss`)\n2. **SECONDARY**: If no relevant results (similarity < 0.7), inform user to contact team\n3. **MEMORY**: Check conversation history from PostgreSQL for context\n---\n\n## INFORMATION SOURCES (PRIORITY ORDER)\n1. **PRIMARY**: Supabase database → `botfusions_sss` table\n2. **SECONDARY**: Official website → https://botfusions.com\n3. **TERTIARY**: Out-of-scope redirection protocol\n\n⚠️ **CRITICAL**: Only answer with information from these sources. Do not speculate or make up information you don't know.\n\n---\n\n## BOTFUSIONS CORPORATE INFORMATION\n\n**Company Profile:**\n- Name: Botfusions\n- Mission: Automate business processes with no-code technologies\n- Core Technology: n8n workflow automation platform\n\n**Services:**\n-     GEO (Üretken Motor Optimizasyonu ) SUPABASE BİLGİ VAR araştır\n- ✅ n8n workflow development\n-     SEO\n- ✅ API integrations (REST/GraphQL/Webhook)\n- ✅ Custom automation solutions\n- ✅ Integration consulting for existing systems\n\n**Industry Expertise:**\n- E-commerce (Order, inventory, customer management)\n- Finance (Payment automation, reporting)\n- Healthcare (Patient tracking, appointment systems)\n- Education (LMS integrations, student automation)\n\n**Contact:**\n- 📧 Email: info@botfusions.com\n- 🌐 Website: https://botfusions.com\n- 📞 Phone: +90 532 611 17 49\n\n---\n\n## BEHAVIORAL RULES\n\n### 1. GREETING PROTOCOL\n**Triggers**: selam, merhaba, hi, hello, hey, günaydın, iyi günler, good morning, good day\n\n**Turkish Response:**"
+        }
+      },
+      "id": "a4c6b072-126b-4047-a22c-6a219d10d7e4",
+      "name": "RAG Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -784,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "model": "anthropic/claude-haiku-4.5",
+        "options": {}
+      },
+      "id": "93cdd367-b848-4472-b6bc-11cd2125d93e",
+      "name": "OpenRouter Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1184,
+        320
+      ],
+      "credentials": {
+        "openRouterApi": {
+          "id": "lyptynmFlWtLZQez",
+          "name": "31072025 openrouter"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.sessionId }}{{ $json.qquery }}",
+        "tableName": "n8n_chat_histories_botfusions",
+        "contextWindowLength": 150
+      },
+      "id": "71f982e3-4c4a-4866-be60-adbd00c633f7",
+      "name": "Postgres Chat Memory1",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        -912,
+        368
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "7u1fAXKJ0M0efjIU",
+          "name": "Supa turklaw postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "botfusions_knowledge",
+        "toolDescription": "Botfusions SSS knowledge base",
+        "tableName": {
+          "__rl": true,
+          "value": "botfusions_sss",
+          "mode": "list",
+          "cachedResultName": "botfusions_sss"
+        },
+        "options": {}
+      },
+      "id": "ecc35d3b-9f77-492d-bff5-6312b9419f14",
+      "name": "Supabase Vector Store1",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        368
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "VeSy6U3ueGYBZKiS",
+          "name": "turklawai/supa"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "633f0a66-4870-48d5-b013-5d26522bb1f7",
+      "name": "Embeddings OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -688,
+        672
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "GpuIDM5IMbQzdsWf",
+          "name": "open ai  n8n v2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "=  {\n    \"response\": \"{{ $json}}\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        -320,
+        -96
+      ],
+      "id": "f0b1f109-1654-4eec-a50a-901988114edf",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Method Check1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Method Check1": {
+      "main": [
+        [
+          {
+            "node": "RAG Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RAG Agent1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "RAG Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "RAG Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store1": {
+      "ai_tool": [
+        [
+          {
+            "node": "RAG Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "8b64642f-e31f-4e69-a4b2-56b1b7160026",
+  "meta": {
+    "instanceId": "7a541743d42f3b3a8c74322c51666271feb89d0d6b7c765045458587124e6540"
+  },
+  "id": "4ndAsrMUq_PdBgh0M3Tgj",
+  "tags": []
+}
