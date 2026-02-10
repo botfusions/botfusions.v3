@@ -24,7 +24,7 @@
 |---------|-------------|
 | **AI Automation** | Yapay zeka destekli surec otomasyonu ve akilli is akislari |
 | **Data Extraction** | Web sitelerinden ve dijital kaynaklardan akilli veri cikarma |
-| **SEO/GEO Optimization** | Arama motoru ve AI arama optimizasyonu |
+| **SEO/GEO Optimization** | Geleneksel arama motoru + AI arama motorlari (ChatGPT, Claude, Perplexity) optimizasyonu |
 | **Chatbot Development** | n8n, Make.com ve ozel platformlarda AI chatbot gelistirme |
 | **Process Automation** | Tekrarlayan is sureclerinin akilli otomasyonu |
 | **Custom Solutions** | Isletmenize ozel yapay zeka cozumleri |
@@ -142,6 +142,55 @@ Response
 - `netlify/functions/chat.mjs` - Serverless chatbot endpoint (`/api/chat`)
 - `supabase/match_documents.sql` - Vector similarity search fonksiyonu
 - `components/ChatBot.tsx` - Frontend UI komponenti
+
+## GEO: Generative Engine Optimization
+
+**GEO (Generative Engine Optimization)**, web iceriginizi AI arama motorlarinda (ChatGPT, Claude, Perplexity, Google SGE, Bing Chat) gorunur kilmak icin optimize eder.
+
+### Neden GEO Onemli?
+
+Geleneksel arama motorlari link listesi sunarken, **Generative Engines** (GE) birden fazla kaynaktan bilgi sentezleyerek dogrudan yanit uretir:
+- Kullanicilar artik web sitelerine gitmeden yanit aliyor
+- Icerik olusturucularin organik trafigi azaliyor
+- Inline citation'lar ile gorunurluk karmasik ve cok boyutlu
+
+### GEO vs SEO
+
+| Metrik | Geleneksel SEO | GEO |
+|--------|---------------|-----|
+| **Gorunurluk Olcumu** | Ranking (1-10) | Word Count + Position + Subjective Impression |
+| **Optimizasyon Hedefi** | Keyword matching | Icerik kalitesi + Credibility + Alintilama |
+| **Etkili Stratejiler** | Backlinks, Keywords | Citations, Statistics, Quotes, Authoritative tone |
+
+### GEO Stratejileri (Kanıtlanmış Yöntemler)
+
+| Strateji | Gorunurluk Artisi | Aciklama |
+|----------|------------------|----------|
+| **Quotation Addition** | +40% | Guvenilir kaynaklardan alintilar ekle |
+| **Statistics Addition** | +35% | Nicel istatistikler ekle |
+| **Cite Sources** | +30% | Guvenilir kaynaklara atifta bulun |
+| **Fluency Optimization** | +28% | Metin akiciligini iyilestir |
+| **Authoritative Tone** | +15% | Ikna edici ve otoriter ton kullan |
+
+### Uygulama Ornekleri
+
+**Ornek 1 - Citation Ekleme (+132%):**
+```markdown
+Oncesi: "Swiss cikolata tuketimi kisibasi yilda 11-12 kilo"
+Sonrasi: "Swiss cikolata tuketimi kisibasi yilda 11-12 kilo
+(Uluslararasi Cikolata Arastirma Grubu [1] anketi)"
+```
+
+**Ornek 2 - Istatistik Ekleme (+65%):**
+```markdown
+"Son 10 yilda robot kullanimi %70 artti"
+```
+
+### Kaynaklar
+
+- **Arastirma Makalesi**: [GEO: Generative Engine Optimization (KDD '24)](https://arxiv.org/abs/2311.09735)
+- **Veri Seti**: GEO-bench - 10,000 sorgu, 9 farkli kaynak
+- **Domain-Specific**: Debate → Authoritative, Facts → Citations, Opinion → Statistics
 
 ## Project Structure
 
