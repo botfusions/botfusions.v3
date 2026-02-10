@@ -11,10 +11,12 @@ import FAQSection from './FAQSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
 import ChatBot from './ChatBot';
+import FloatingAIStars from './FloatingAIStars';
 
 const HomePage: React.FC = () => {
   return (
     <div className="relative min-h-screen bg-black overflow-x-hidden selection:bg-purple-500/30">
+      <FloatingAIStars />
       <Navbar />
       <main>
         <Hero />
