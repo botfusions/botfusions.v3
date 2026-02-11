@@ -40,3 +40,7 @@ CODEBASE.md
 # Temporary files
 nul
 *.zip
+
+# Work logs (not pushed to GitHub)
+WORK_SESSION.md
+CHANGELOG_TEMP.md
