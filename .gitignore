@@ -44,3 +44,7 @@ nul
 # Work logs (not pushed to GitHub)
 WORK_SESSION.md
 CHANGELOG_TEMP.md
+
+# Old project copy (use root version instead)
+Bot_Web/
+galaxy-temp/
