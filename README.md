@@ -16,8 +16,6 @@
 
 **Botfusions**, Istanbul merkezli premium AI destekli veri cikarma ve otomasyon cozumleri sunan bir platformdur. Modern isletmeler icin akilli otomasyon araclari gelistiriyoruz.
 
-> Last updated: Feb 11, 2026
-
 > "Precision in every byte."
 
 ## Services
@@ -27,7 +25,6 @@
 | **AI Automation** | Yapay zeka destekli surec otomasyonu ve akilli is akislari |
 | **Data Extraction** | Web sitelerinden ve dijital kaynaklardan akilli veri cikarma |
 | **SEO/GEO Optimization** | Geleneksel arama motoru + AI arama motorlari (ChatGPT, Claude, Perplexity) optimizasyonu |
-| **Rankie.ai Partnership** | Turkiye'nin ilk dual-engine dijital buyume ortakligi - %340 trafik artisi, %92.5 zaman tasarrufu |
 | **Chatbot Development** | n8n, Make.com ve ozel platformlarda AI chatbot gelistirme |
 | **Process Automation** | Tekrarlayan is sureclerinin akilli otomasyonu |
 | **Custom Solutions** | Isletmenize ozel yapay zeka cozumleri |
@@ -40,13 +37,11 @@
 - **AI ChatBot** - RAG pipeline (OpenAI embeddings + Supabase vector search + OpenRouter LLM) ile akilli sohbet botu
 - **Chat History** - Supabase'de konusma gecmisi kaydi (n8n uyumlu)
 - **Contact Form** - EmailJS entegrasyonu
-- **FAQ Section** - Accordion animasyonlu SSS bolumu (Botfusions x Rankie.ai ortaklığı dahil)
+- **FAQ Section** - Accordion animasyonlu SSS bolumu
 - **Responsive Design** - Tum cihazlarda mukemmel gorunum
 - **Dark Mode** - Modern koyu tema ve glass morphism efektleri
 - **SEO & GEO** - Schema.org, Open Graph, AI arama motoru optimizasyonu
 - **Security** - OWASP 2025 uyumlu, DOMPurify XSS korumasi ([detaylar](SECURITY.md))
-- **Dual-Engine Dashboards** - 8/8 AI engine tracking, Command Center, Predictive Analytics
-- **Hero Section** - "AI Agents That Think, Decide, and Execute" messaging
 
 ## Tech Stack
 

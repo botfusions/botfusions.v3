@@ -2,28 +2,28 @@
   {
     "id": 1,
     "tag": {
-      "en": "AI Trends",
-      "tr": "AI Trendleri"
+      "en": "GEO",
+      "tr": "GEO"
     },
     "date": {
-      "en": "Mar 15, 2024",
-      "tr": "15 Mar 2024"
+      "en": "Jan 15, 2026",
+      "tr": "15 Oca 2026"
     },
     "title": {
-      "en": "The Future of AI Automation in 2024",
-      "tr": "2024'te AI Otomasyonunun Geleceği"
+      "en": "GEO: Generative Engine Optimization",
+      "tr": "GEO: Üretken Motor Optimizasyonu"
     },
     "desc": {
-      "en": "Discover how artificial intelligence is reshaping industries and what to expect in the coming year.",
-      "tr": "Yapay zekanın endüstrileri nasıl yeniden şekillendirdiğini ve önümüzdeki yılda neler bekleyeceğinizi keşfedin."
+      "en": "Discover how to optimize your content for AI-powered search engines like ChatGPT, Claude, and Perplexity to boost visibility by up to 40%.",
+      "tr": "ChatGPT, Claude ve Perplexity gibi AI destekli arama motorları için içeriğinizi optimize ederek görünürlüğünüzü %40'a kadar artırın."
     },
     "content": {
-      "en": "Artificial Intelligence is revolutionizing the way businesses operate in 2024. From automated customer service to predictive analytics, AI is becoming an essential tool for companies looking to stay competitive.\n\n**Key Trends:**\n\n1. **Generative AI Integration** - Companies are integrating generative AI models into their workflows for content creation, code generation, and design.\n\n2. **AI-Powered Decision Making** - Machine learning algorithms are helping executives make data-driven decisions faster than ever before.\n\n3. **Automation at Scale** - Businesses are automating repetitive tasks, freeing up human workers for more creative and strategic work.\n\n4. **Personalization** - AI is enabling hyper-personalized customer experiences across all touchpoints.\n\nAt Botfusions, we're at the forefront of this AI revolution, helping businesses implement cutting-edge automation solutions that drive real results.",
-      "tr": "Yapay Zeka, 2024'te işletmelerin çalışma şeklini devrim niteliğinde değiştiriyor. Otomatik müşteri hizmetlerinden tahmine dayalı analitiğe kadar, AI rekabetçi kalmak isteyen şirketler için vazgeçilmez bir araç haline geliyor.\n\n**Önemli Trendler:**\n\n1. **Üretken AI Entegrasyonu** - Şirketler, içerik oluşturma, kod üretme ve tasarım için üretken AI modellerini iş akışlarına entegre ediyor.\n\n2. **AI Destekli Karar Verme** - Makine öğrenimi algoritmaları, yöneticilerin veri odaklı kararları her zamankinden daha hızlı almasına yardımcı oluyor.\n\n3. **Ölçekte Otomasyon** - İşletmeler tekrarlayan görevleri otomatikleştirerek, çalışanları daha yaratıcı ve stratejik işler için serbest bırakıyor.\n\n4. **Kişiselleştirme** - AI, tüm temas noktalarında hiper-kişiselleştirilmiş müşteri deneyimleri sağlıyor.\n\nBotfusions olarak, bu AI devriminin ön saflarında yer alıyor ve işletmelerin gerçek sonuçlar üreten son teknoloji otomasyon çözümlerini uygulamasına yardımcı oluyoruz."
+      "en": "## Introduction to Generative Engine Optimization\n\nLarge language models (LLMs) have revolutionized how we search for information online. Traditional search engines like Google and Bing are rapidly being replaced by **generative engines (GEs)** - systems that use AI to gather, synthesize, and summarize information from multiple sources to answer user queries directly.\n\n### The GEO Solution\n\n**Generative Engine Optimization (GEO)** is the first novel paradigm designed to help content creators improve their visibility in generative engine responses. GEO is a flexible black-box optimization framework that enables website owners to optimize their content for AI-powered search engines through systematic visibility metrics.\n\n### Proven Results\n\nThrough rigorous evaluation on **GEO-bench** - a large-scale benchmark of 10,000 diverse user queries across multiple domains - GEO can boost visibility by up to **40%** in generative engine responses.\n\n### Top Performing Methods\n\n**Position-Adjusted Word Count Improvements:**\n- **Quotation Addition**: +40.8% visibility boost\n- **Statistics Addition**: +30.6% improvement\n- **Cite Sources**: +27.5% increase\n- **Fluency Optimization**: +28.0% enhancement\n\n### Why Traditional SEO Fails in AI Search\n\nInterestingly, traditional SEO tactics failed:\n- **Keyword Stuffing**: Actually decreased visibility by -8.3%\n- Traditional keyword-focused strategies are ineffective\n\n### Key Success Factors\n\n1. **Credibility Over Keywords**: Citations, quotes, and statistics outperform traditional SEO\n2. **Presentation Matters**: Fluency and clarity significantly impact visibility\n3. **Domain Specificity**: Tailored strategies yield 5-10% better results\n4. **Democratization**: Levels playing field for small creators vs. corporations\n\n### For Content Creators\n\n- Focus on content quality, credibility, and presentation\n- Implement domain-specific optimization methods\n- Combine complementary strategies (fluency + statistics/citations)\n- Add credible citations and quotations from authoritative sources\n\n### The Future of Search\n\nAs generative engines become the primary interface for information access, GEO will transition from emerging technique to fundamental skill. Success in this new paradigm requires understanding that AI search engines value **clarity, credibility, and citations** over keywords and backlinks.\n\n**Research Citation**: Aggarwal et al., \"GEO: Generative Engine Optimization,\" KDD '24, Barcelona, Spain.\n\nAt Botfusions, we help businesses implement GEO strategies to maximize their visibility in AI-powered search results.",
+      "tr": "## Üretken Motor Optimizasyonuna Giriş\n\nBüyük dil modelleri (LLM'ler), çevrimiçi bilgi arama şeklimizde devrim yarattı. Google ve Bing gibi geleneksel arama motorları, kullanıcı sorgularına doğrudan yanıt vermek için birden fazla kaynaktan bilgi toplamak, sentezlemek ve özetlemek üzere AI kullanan sistemler olan **üretken motorlar (GE'ler)** tarafından hızla değiştiriliyor.\n\n### GEO Çözümü\n\n**Üretken Motor Optimizasyonu (GEO)**, içerik oluşturucuların üretken motor yanıtlarında görünürlüklerini artırmalarına yardımcı olmak için tasarlanmış ilk yeni paradigmadır. GEO, web sitesi sahiplerinin sistematik görünürlük metrikleri aracılığıyla içeriklerini AI destekli arama motorları için optimize etmelerini sağlayan esnek bir kara kutu optimizasyon çerçevesidir.\n\n### Kanıtlanmış Sonuçlar\n\nBirden fazla alanda 10.000 çeşitli kullanıcı sorgusundan oluşan büyük ölçekli bir kıyaslama olan **GEO-bench** üzerinde yapılan titiz değerlendirme yoluyla, GEO üretken motor yanıtlarında görünürlüğü **%40'a** kadar artırabilir.\n\n### En İyi Performans Gösteren Yöntemler\n\n**Konum Ayarlı Kelime Sayısı İyileştirmeleri:**\n- **Alıntı Ekleme**: %40,8 görünürlük artışı\n- **İstatistik Ekleme**: %30,6 iyileşme\n- **Kaynak Gösterme**: %27,5 artış\n- **Akıcılık Optimizasyonu**: %28,0 geliştirme\n\n### Geleneksel SEO Neden AI Aramada Başarısız Olur\n\nİlginç bir şekilde, geleneksel SEO taktikleri başarısız oldu:\n- **Anahtar Kelime Doldurma**: Aslında görünürlüğü %-8,3 azalttı\n- Geleneksel anahtar kelime odaklı stratejiler etkisiz\n\n### Temel Başarı Faktörleri\n\n1. **Anahtar Kelimeler Yerine Güvenilirlik**: Alıntılar, tırnak işaretleri ve istatistikler geleneksel SEO'dan daha iyi performans gösterir\n2. **Sunum Önemlidir**: Akıcılık ve netlik görünürlüğü önemli ölçüde etkiler\n3. **Alan Özgüllüğü**: Özel stratejiler %5-10 daha iyi sonuç verir\n4. **Demokratikleşme**: Küçük içerik oluşturucular ile şirketler arasında eşit oyun alanı\n\n### İçerik Oluşturucular İçin\n\n- İçerik kalitesi, güvenilirlik ve sunuma odaklanın\n- Alana özel optimizasyon yöntemlerini uygulayın\n- Tamamlayıcı stratejileri birleştirin (akıcılık + istatistikler/alıntılar)\n- Otoriter kaynaklardan güvenilir alıntılar ve tırnak işaretleri ekleyin\n\n### Aramanın Geleceği\n\nÜretken motorlar bilgiye erişim için birincil arayüz haline geldikçe, GEO yeni ortaya çıkan teknikten temel beceriye dönüşecek. Bu yeni paradigmada başarı, AI arama motorlarının anahtar kelimeler ve geri bağlantılar yerine **netlik, güvenilirlik ve alıntıları** değerlendirdiğini anlamayı gerektirir.\n\n**Araştırma Atfı**: Aggarwal ve ark., \"GEO: Generative Engine Optimization,\" KDD '24, Barselona, İspanya.\n\nBotfusions olarak, işletmelerin AI destekli arama sonuçlarında görünürlüklerini en üst düzeye çıkarmak için GEO stratejilerini uygulamalarına yardımcı oluyoruz."
     },
     "graphic": "trend",
-    "tagColor": "text-purple-400",
-    "borderColor": "group-hover:border-purple-500/50",
+    "tagColor": "text-yellow-400",
+    "borderColor": "group-hover:border-yellow-500/50",
     "gradient": "from-[#1a1a1a] to-[#0f0f0f]"
   },
   {
@@ -33,8 +33,8 @@
       "tr": "Teknoloji"
     },
     "date": {
-      "en": "Mar 10, 2024",
-      "tr": "10 Mar 2024"
+      "en": "Jan 22, 2026",
+      "tr": "22 Oca 2026"
     },
     "title": {
       "en": "Integrating LLMs into Your Workflow",
@@ -60,8 +60,8 @@
       "tr": "Güvenlik"
     },
     "date": {
-      "en": "Mar 05, 2024",
-      "tr": "05 Mar 2024"
+      "en": "Jan 28, 2026",
+      "tr": "28 Oca 2026"
     },
     "title": {
       "en": "AI Safety & Data Privacy",

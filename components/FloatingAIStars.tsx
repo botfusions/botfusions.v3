@@ -97,9 +97,9 @@ const FloatingAIStars: React.FC = () => {
             />
 
             {/* Star body with company name */}
-            <div className="relative flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-yellow-500 px-3 py-1.5 rounded-full shadow-lg">
+            <div className="relative flex items-center gap-2 bg-gradient-to-r from-yellow-400/70 to-yellow-500/60 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg border border-yellow-300/30">
               {/* Sparkle effect */}
-              <div className="absolute -inset-1 bg-yellow-400/20 rounded-full blur-md" />
+              <div className="absolute -inset-1 bg-yellow-400/10 rounded-full blur-md" />
 
               {/* Star icon */}
               <svg

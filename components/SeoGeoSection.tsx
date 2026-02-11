@@ -1,6 +1,9 @@
 import React from 'react';
 import { Search, Bot, Lightbulb, Code, CheckCircle, TrendingUp, MousePointerClick } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import CompleteCoverageDashboard from './CompleteCoverageDashboard';
+import CommandCenterDashboard from './CommandCenterDashboard';
+import PredictiveDashboard from './PredictiveDashboard';
 
 const SeoGeoSection: React.FC = () => {
   const { t } = useLanguage();
@@ -47,12 +50,7 @@ const SeoGeoSection: React.FC = () => {
           <div className="glass-card rounded-2xl overflow-hidden border border-white/10 bg-[#0a0a0a]">
             {/* Browser Header */}
             <div className="bg-white/5 px-4 py-3 border-b border-white/5 flex items-center gap-2">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-              </div>
-              <div className="ml-4 text-xs text-gray-500 font-mono">Botfusions GEO Optimizer</div>
+              <div className="text-xs text-gray-500 font-mono">Botfusions GEO Optimizer</div>
             </div>
 
             {/* Content */}
@@ -100,7 +98,6 @@ const SeoGeoSection: React.FC = () => {
               {/* Input Area Mockup */}
                <div className="relative mt-4">
                   <div className="w-full bg-white/5 border border-white/10 rounded-xl h-10 px-4 flex items-center text-xs text-gray-600">
-                     ...
                   </div>
                    <div className="absolute right-1 top-1 w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
                       <TrendingUp size={14} className="text-white"/>
@@ -172,6 +169,15 @@ const SeoGeoSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Complete Coverage Dashboard */}
+      <CompleteCoverageDashboard />
+
+      {/* Command Center Dashboard */}
+      <CommandCenterDashboard />
+
+      {/* Predictive Dashboard */}
+      <PredictiveDashboard />
     </section>
   );
 };
