@@ -16,6 +16,8 @@
 
 **Botfusions**, Istanbul merkezli premium AI destekli veri cikarma ve otomasyon cozumleri sunan bir platformdur. Modern isletmeler icin akilli otomasyon araclari gelistiriyoruz.
 
+> Last updated: Feb 11, 2026
+
 > "Precision in every byte."
 
 ## Services
