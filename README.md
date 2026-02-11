@@ -8,7 +8,7 @@
   [![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
   [![Three.js](https://img.shields.io/badge/Three.js-r182-000000?style=for-the-badge&logo=three.js)](https://threejs.org/)
   [![TailwindCSS](https://img.shields.io/badge/Tailwind-CDN-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/)
+  [![Netlify Status](https://img.shields.io/badge/Netlify-Deployed-00C7B7?style=for-the-badge&logo=netlify)](https://botfusionsl.com/)
   [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 </div>
 
@@ -68,8 +68,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/botfusions/bot-web.git
-cd bot-web
+git clone https://github.com/botfusions/botfusions.v3.git
+cd botfusions.v3
 
 # Install dependencies
 npm install
@@ -195,7 +195,7 @@ Sonrasi: "Swiss cikolata tuketimi kisibasi yilda 11-12 kilo
 ## Project Structure
 
 ```
-Bot_Web/
+botfusions.v3/
 ├── components/
 │   ├── galaxy/          # 3D Galaxy viewer
 │   ├── HomePage.tsx     # Ana sayfa
@@ -210,6 +210,7 @@ Bot_Web/
 ├── supabase/
 │   └── match_documents.sql  # Vector search function
 ├── public/data/         # Blog JSON verileri
+├── dist/                # Pre-built production files
 ├── App.tsx              # Router setup
 ├── index.html           # HTML + security headers
 ├── netlify.toml         # Netlify configuration
@@ -224,8 +225,9 @@ Bot_Web/
 1. [Netlify](https://app.netlify.com/) hesabiniza girin
 2. **Add new site** > **Import an existing project** > GitHub repo secin
 3. Build ayarlari:
-   - **Build command:** `npm run build`
+   - **Build command:** `npm run build` (veya pre-built kullanmak icin: `echo 'Using pre-built dist'`)
    - **Publish directory:** `dist`
+   - **Note:** Proje su anda pre-built dist/ kullanmaktadir
 4. **Environment variables** ekleyin (Site settings > Environment variables):
    - `VITE_EMAILJS_SERVICE_ID`
    - `VITE_EMAILJS_TEMPLATE_ID`
